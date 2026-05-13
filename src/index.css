@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  --color-dhl-yellow: #FFCC00;
+  --color-dhl-red: #D40511;
+  --color-bweh-blue: #005B96;
+  --color-bweh-blue-dark: #003D66;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-900 bg-white selection:bg-dhl-yellow selection:text-black;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+}
+
+/* Custom Utilities for DHL style */
+.dhl-gradient {
+  background: linear-gradient(90deg, #FFCC00 0%, #FFCC00 95%, #D40511 95%, #D40511 100%);
+}
+
+.dhl-card {
+  @apply bg-white border border-gray-100 shadow-sm transition-all duration-500 rounded-none;
+}
+
+.dhl-card:hover {
+  @apply shadow-2xl -translate-y-2 border-dhl-yellow;
+}
+
+.dhl-button {
+  @apply inline-flex items-center justify-center px-6 py-3 font-bold bg-dhl-red text-white transition-all duration-300 hover:bg-black hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer uppercase tracking-wider;
+}
+
+.dhl-button-yellow {
+  @apply inline-flex items-center justify-center px-6 py-3 font-bold bg-dhl-yellow text-black transition-all duration-300 hover:bg-dhl-red hover:text-white hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer uppercase tracking-wider;
+}
+
+.dhl-button-blue {
+  @apply inline-flex items-center justify-center px-6 py-3 font-bold bg-bweh-blue text-white transition-all duration-300 hover:bg-bweh-blue-dark hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer uppercase tracking-wider;
+}
+

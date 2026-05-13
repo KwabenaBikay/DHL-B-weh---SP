@@ -1,0 +1,45 @@
+# Disable directory browsing
+Options -Indexes
+
+# Enforce HTTPS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Handle SPA routing (redirect all non-file requests to index.html)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    # Prevent Clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME-sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable Cross-Site Scripting (XSS) filter
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Enforce strict HTTPS
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Control Referrer information
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy (Basic SPA Config)
+    # Allows everything from self, images/scripts from CDNs or inline for Vite, 
+    # and allows connecting to DHL tracking and Google Maps API.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://www.google.com/maps/;"
+    
+    # Restrict permissions
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
