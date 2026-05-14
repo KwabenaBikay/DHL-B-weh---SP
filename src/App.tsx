@@ -505,7 +505,7 @@ export default function App() {
 
         <div className="w-full max-w-[1360px] mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div
-            className="flex w-full h-[300px] md:h-[400px] gap-2 md:gap-4"
+            className="flex flex-col md:flex-row w-full h-[500px] md:h-[400px] gap-1 md:gap-4"
             onMouseEnter={() => setIsGalleryHovered(true)}
             onMouseLeave={() => setIsGalleryHovered(false)}
             onTouchStart={() => setIsGalleryHovered(true)}
@@ -519,7 +519,7 @@ export default function App() {
                   onClick={() => setActiveGalleryIndex(index)}
                   onMouseEnter={() => setActiveGalleryIndex(index)}
                   className={`relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-sm ${isActive ? 'flex-[10] md:flex-[8]' : 'flex-[1]'
-                    } min-w-[30px] md:min-w-[60px] lg:min-w-[80px] border-l-[4px] ${isActive ? 'border-dhl-red' : 'border-transparent'}`}
+                    } min-h-[30px] md:min-h-0 md:min-w-[60px] lg:min-w-[80px] border-t-[3px] md:border-t-0 md:border-l-[4px] ${isActive ? 'border-dhl-red' : 'border-transparent'}`}
                 >
                   {/* Image Background */}
                   <img
@@ -531,15 +531,15 @@ export default function App() {
 
                   {/* Active State Overlay & Text */}
                   <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                    <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-20">
-                      <p className="text-dhl-yellow text-xs md:text-sm font-bold uppercase tracking-widest mb-1 md:mb-2">{`Photo 0${index + 1}`}</p>
-                      <p className="text-white text-xl md:text-3xl font-black uppercase tracking-tight whitespace-nowrap">{image.caption}</p>
+                    <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 z-20">
+                      <p className="text-dhl-yellow text-[10px] md:text-sm font-bold uppercase tracking-widest mb-1 md:mb-2">{`Photo 0${index + 1}`}</p>
+                      <p className="text-white text-lg md:text-3xl font-black uppercase tracking-tight whitespace-nowrap">{image.caption}</p>
                     </div>
                   </div>
 
                   {/* Inactive State Vertical Text */}
-                  <div className={`absolute inset-0 flex items-end justify-center pb-6 md:pb-8 transition-opacity duration-500 delay-200 ${isActive ? 'opacity-0 hidden' : 'opacity-100'}`}>
-                    <span className="text-white/80 font-bold tracking-widest uppercase origin-bottom -rotate-90 whitespace-nowrap text-[10px] md:text-sm">
+                  <div className={`absolute inset-0 flex items-center md:items-end justify-center md:pb-8 transition-opacity duration-500 delay-200 ${isActive ? 'opacity-0 hidden' : 'opacity-100'}`}>
+                    <span className="text-white/80 font-bold tracking-widest uppercase md:origin-bottom md:-rotate-90 whitespace-nowrap text-[10px] md:text-sm">
                       {image.caption}
                     </span>
                   </div>
@@ -1119,11 +1119,11 @@ export default function App() {
               <div className="space-y-4">
                 <a href="tel:+233" className="flex items-center gap-3 text-gray-900 font-bold hover:text-dhl-red transition-colors">
                   <Phone size={16} className="text-dhl-red" />
-                  <span className="text-base font-bold text-gray-900">+233 XX XXX XXXX</span>
+                  <span className="text-base font-bold text-gray-900">+233 553607172</span>
                 </a>
-                <a href="mailto:info@dhl-bweh.com" className="flex items-center gap-3 text-gray-900 font-bold hover:text-dhl-red transition-colors">
+                <a href="mailto:optimaltravelandcharterservice@gmail.com" className="flex items-center gap-3 text-gray-900 font-bold hover:text-dhl-red transition-colors">
                   <Mail size={16} className="text-dhl-red" />
-                  <span className="text-base font-bold text-gray-900">info@dhl-bweh.com</span>
+                  <span className="text-base font-bold text-gray-900">optimaltravelandcharterservice@gmail.com</span>
                 </a>
               </div>
             </div>
